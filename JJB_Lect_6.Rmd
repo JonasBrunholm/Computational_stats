@@ -1,0 +1,27 @@
+---
+title: "JJB_Lecture_07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(sde)
+```
+
+```{r}
+n   <- 100
+T   <- 1
+x_0 <- 1
+d   <- expression(1)
+s   <- expression(2*sqrt(abs(x)))
+sx  <- expression ((1/ sqrt ( abs (x) ))* sign ( x))
+Delta <- 1
+
+set.seed(2)
+
+Xsdesim <- sde.sim (method='euler',t0 = 0, T=1, X0 = x_0, N = n ,delta = Delta , drift =d , sigma =s , sigma.x = sx )
+
+plot(Xsdesim)
+
+```
+
